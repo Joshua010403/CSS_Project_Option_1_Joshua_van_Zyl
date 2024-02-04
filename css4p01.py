@@ -195,7 +195,7 @@ print("Answer 11: There are",unique_genres,"unique genres in the dataset.\n")
 """ Question 12 """
 
 print("Question 12: Do a correlation of the numerical features, what insights can you deduce? Mention at least 5 insights.\n\nAnd what advice can you give directors to produce better movies?")
-
+# Reading in the data and discarding the NANs as replacing them with the mean has an influence on the median
 movie_df2 = pd.read_csv("movie_dataset.csv")
 
 movie_df2.drop(["Rank"], inplace=True, axis=1)
@@ -205,7 +205,7 @@ movie_df2.columns = col_names
 movie_df2.dropna(inplace = True)
 
 movie_df_profiling = movie_df2[["Year", "Runtime_minutes", "Rating", "Votes", "Revenue_millions", "Metascore"]].copy()
-
+# Creating the profiling report
 profile = PR(movie_df_profiling, title=("Movies Profiling Report"))
 
 profile.to_file("Movies_profiling_report.html")
